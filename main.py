@@ -9,7 +9,7 @@ TOKEN = os.getenv("TOKEN")
 bot = commands.Bot(command_prefix="!")
 
 
-@bot.command(name="info")
+@bot.command(name="game")
 async def info(ctx, *args: str):
     client_id = "4SJkTSHGOB"
     game = " ".join(args)
