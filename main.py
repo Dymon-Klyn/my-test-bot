@@ -13,10 +13,11 @@ bot = commands.Bot(command_prefix="!")
 async def info(ctx, *args: str):
     client_id = "4SJkTSHGOB"
     game = " ".join(args)
-    url = f"https://www.boardgameatlas.com/api/search?name={game}&client_id={client_id}"
+    url = f"https://www.boardgameatlas.com/api/search?name={game}&client_id={client_id}&fuzzy_match=true"
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as resp:
             cont = await resp.json()
-            await ctx.send(cont["games"][0]["description"])
+            a = cont["games"][0]["description_preview"]
+            await ctx.send(f"```{a}```")
 
 bot.run(TOKEN)
