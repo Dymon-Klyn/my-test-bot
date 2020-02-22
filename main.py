@@ -10,6 +10,7 @@ bot = commands.Bot(command_prefix="!")
 
 
 @bot.command(name="info")
+
 async def info(ctx, *args: str):
     client_id = "4SJkTSHGOB"
     game = " ".join(args)
