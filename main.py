@@ -37,12 +37,13 @@ async def game_info(ctx, *args: str):
             try:
                 cont = await resp.json()
                 if cont["games"]:
+                    name = cont["games"][0]["name"]
                     min_p = cont["games"][0]["min_players"]
                     max_p = cont["games"][0]["max_players"]
                     min_play = cont["games"][0]["min_playtime"]
                     max_play = cont["games"][0]["max_playtime"]
                     rules = cont["games"][0]["rules_url"]
-                    await ctx.send(f"```players: {min_p} to {max_p}\nplaytime: {min_play} to {max_play} minutes\nrules: ```{rules}")
+                    await ctx.send(f"```name: {name}\nplayers: {min_p} to {max_p}\nplaytime: {min_play} to {max_play} minutes\nrules: ```{rules}")
                 else:
                     raise KeyError
             except KeyError:
